@@ -1,18 +1,17 @@
 package com.example.domain;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
+import javax.persistence.*;
 import java.io.Serializable;
+import java.util.Date;
 
 @Entity
+@Table(name = "user")
 public class User implements Serializable {
 
 
     private static final long serialVersionUID = -3081131195969247393L;
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
     @Column(nullable = false, unique = true)
     private String userName;
@@ -20,15 +19,15 @@ public class User implements Serializable {
     private String passWord;
     @Column(nullable = false, unique = true)
     private String email;
-    @Column(nullable = true, unique = true)
+    @Column(nullable = false, unique = true)
     private String nickName;
     @Column(nullable = false)
-    private String regTime;
+    private Date regTime;
 
     public User() {
     }
 
-    public User(String userName, String passWord, String email, String nickName, String regTime) {
+    public User(String userName, String passWord, String email, String nickName, Date regTime) {
         this.userName = userName;
         this.passWord = passWord;
         this.email = email;
@@ -76,11 +75,11 @@ public class User implements Serializable {
         this.nickName = nickName;
     }
 
-    public String getRegTime() {
+    public Date getRegTime() {
         return regTime;
     }
 
-    public void setRegTime(String regTime) {
+    public void setRegTime(Date regTime) {
         this.regTime = regTime;
     }
 }

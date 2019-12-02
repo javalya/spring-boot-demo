@@ -18,9 +18,10 @@ import org.springframework.data.redis.serializer.Jackson2JsonRedisSerializer;
 
 import java.lang.reflect.Method;
 
-@Configuration
-@EnableCaching
+//@Configuration
+//@EnableCaching
 public class RedisConfig extends CachingConfigurerSupport {
+
     @Bean
     @Override
     public KeyGenerator keyGenerator() {
@@ -59,4 +60,6 @@ public class RedisConfig extends CachingConfigurerSupport {
         template.afterPropertiesSet();
         return template;
     }
+
+
 }
