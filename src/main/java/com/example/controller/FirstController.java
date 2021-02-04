@@ -1,10 +1,14 @@
 package com.example.controller;
 
+import com.example.annotation.AccessLimit;
+import com.example.annotation.DemoAnnotation1;
+import com.example.annotation.DemoAnnotation2;
 import com.example.domain.User;
 import com.example.domain.UserDAO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cache.annotation.Cacheable;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import javax.servlet.http.HttpSession;
@@ -37,8 +41,38 @@ public class FirstController {
         if (uid == null) {
             uid = UUID.randomUUID();
         }
-        session.setAttribute("uid", uid);
+        session.setAttribute("uid", uid.toString());
         return session.getId();
+    }
+
+    /**
+     * 接口防刷测试
+     * @return
+     */
+    @AccessLimit(seconds=20, maxCount=3)
+    @ResponseBody
+    @RequestMapping("/fangshua")
+    public String fangshua(){
+        return "请求成功";
+    }
+
+    /**
+     * 注解测试
+     * @return
+     */
+
+    @DemoAnnotation1
+    @ResponseBody
+    @RequestMapping("/annotation1")
+    public String demoAnnotation1(){
+        return "请求成功1";
+    }
+
+    @DemoAnnotation2(arg1 = "a")
+    @ResponseBody
+    @RequestMapping("/annotation2")
+    public String demoAnnotation2(String a,String b,String c){
+        return "请求成功2";
     }
 
 

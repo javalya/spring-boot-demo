@@ -9,7 +9,7 @@ import java.util.Date;
 /**
  * 定时器任务
  */
-@Component
+//@Component
 public class SchedulerTask1 {
     private int count=0;
 
