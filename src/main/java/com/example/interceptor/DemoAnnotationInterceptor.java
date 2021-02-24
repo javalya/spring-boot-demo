@@ -1,7 +1,9 @@
 package com.example.interceptor;
 
 
+import com.alibaba.fastjson.JSONObject;
 import com.example.annotation.DemoAnnotation2;
+import com.example.domain.User;
 import org.aspectj.lang.JoinPoint;
 import org.aspectj.lang.annotation.AfterReturning;
 import org.aspectj.lang.annotation.Aspect;
@@ -16,6 +18,7 @@ import javax.annotation.PostConstruct;
 import java.lang.reflect.Method;
 import java.lang.reflect.Modifier;
 import java.util.Arrays;
+import java.util.List;
 
 /**
  * 测试注解切面类
@@ -65,16 +68,28 @@ public class DemoAnnotationInterceptor {
     }
 
 
+    /**
+     * 经测试，@AfterReturning不可修改返回值，list可修改
+     * @param joinPoint
+     * @param result
+     * @return
+     */
     @AfterReturning(value = "DemoInterceptor2()", returning = "result")
-    public void Interceptor2Common(JoinPoint joinPoint, Object result) {
+    public Object Interceptor2Common(JoinPoint joinPoint, List result) {
         log.info("DemoInterceptor2");
         MethodSignature ms = (MethodSignature) joinPoint.getSignature();
         Method method = ms.getMethod();
+        //接口入参
         log.info("args: {}", Arrays.toString(joinPoint.getArgs()));
         log.info("result: {}", result);
+        //注解中属性值
         String arg1 = method.getAnnotation(DemoAnnotation2.class).arg1();
         String arg2 = method.getAnnotation(DemoAnnotation2.class).arg2();
-
-
+        log.info("arg1:"+arg1+ "  arg2:"+arg2);
+//        result = result +"_params:" +Arrays.toString(joinPoint.getArgs()) + "_annotationArgs:" + arg1 +"&" + arg2;
+//        result = result+"_afterReturning";
+        result.remove("a");
+        log.info(JSONObject.toJSONString(result));
+        return result;
     }
 }

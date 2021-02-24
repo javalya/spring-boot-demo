@@ -15,35 +15,36 @@ public class DingTalkTest {
 
 
     public static void main(String[] args) throws Exception{
-        DingTalkClient client = new DefaultDingTalkClient("https://oapi.dingtalk.com/robot/send?"+sign("f46256c26dcb27a268bc44cb9d5ec2af658c7b8065d58298ea4f9dbfb98f3211"));
-        OapiRobotSendRequest request = new OapiRobotSendRequest();
-        request.setMsgtype("text");
-        OapiRobotSendRequest.Text text = new OapiRobotSendRequest.Text();
-        text.setContent("测试文本消息");
-        request.setText(text);
-
-        OapiRobotSendRequest.At at = new OapiRobotSendRequest.At();
-//        at.setAtMobiles(Arrays.asList("13738049559"));
-// isAtAll类型如果不为Boolean，请升级至最新SDK
-        at.setIsAtAll(false);
-        request.setAt(at);
-
-//        request.setMsgtype("link");
-//        OapiRobotSendRequest.Link link = new OapiRobotSendRequest.Link();
-//        link.setMessageUrl("https://www.dingtalk.com/");
-//        link.setPicUrl("");
-//        link.setTitle("时代的火车向前开");
-//        link.setText("这个即将发布的新版本，创始人xx称它为红树林。而在此之前，每当面临重大升级，产品经理们都会取一个应景的代号，这一次，为什么是红树林");
-//        request.setLink(link);
+//        DingTalkClient client = new DefaultDingTalkClient("https://oapi.dingtalk.com/robot/send?"+sign("f46256c26dcb27a268bc44cb9d5ec2af658c7b8065d58298ea4f9dbfb98f3211"));
+//        OapiRobotSendRequest request = new OapiRobotSendRequest();
+//        request.setMsgtype("text");
+//        OapiRobotSendRequest.Text text = new OapiRobotSendRequest.Text();
+//        text.setContent("测试文本消息");
+//        request.setText(text);
 //
-//        request.setMsgtype("markdown");
-//        OapiRobotSendRequest.Text text1 = new OapiRobotSendRequest.Text();
-//        text1.setContent("1234");
-//        request.setText(text1);
-        OapiRobotSendResponse response = client.execute(request);
-        System.out.println(JSONObject.toJSONString(response));
+//        OapiRobotSendRequest.At at = new OapiRobotSendRequest.At();
+////        at.setAtMobiles(Arrays.asList("13738049559"));
+//// isAtAll类型如果不为Boolean，请升级至最新SDK
+//        at.setIsAtAll(false);
+//        request.setAt(at);
+//
+////        request.setMsgtype("link");
+////        OapiRobotSendRequest.Link link = new OapiRobotSendRequest.Link();
+////        link.setMessageUrl("https://www.dingtalk.com/");
+////        link.setPicUrl("");
+////        link.setTitle("时代的火车向前开");
+////        link.setText("这个即将发布的新版本，创始人xx称它为红树林。而在此之前，每当面临重大升级，产品经理们都会取一个应景的代号，这一次，为什么是红树林");
+////        request.setLink(link);
+////
+////        request.setMsgtype("markdown");
+////        OapiRobotSendRequest.Text text1 = new OapiRobotSendRequest.Text();
+////        text1.setContent("1234");
+////        request.setText(text1);
+//        OapiRobotSendResponse response = client.execute(request);
+//        System.out.println(JSONObject.toJSONString(response));
 
-
+        String a = "汉";
+        System.out.println(a.split("族")[0] + "族");
     }
 
 

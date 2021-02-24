@@ -5,6 +5,7 @@ import com.example.annotation.DemoAnnotation1;
 import com.example.annotation.DemoAnnotation2;
 import com.example.domain.User;
 import com.example.domain.UserDAO;
+import com.example.service.AnnotationService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cache.annotation.Cacheable;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -21,6 +22,9 @@ public class FirstController {
 
     @Autowired
     private UserDAO userRepository;
+
+    @Autowired
+    private AnnotationService annotationService;
 
     @RequestMapping("/hello")
     public String index() {
@@ -68,11 +72,10 @@ public class FirstController {
         return "请求成功1";
     }
 
-    @DemoAnnotation2(arg1 = "a")
     @ResponseBody
     @RequestMapping("/annotation2")
-    public String demoAnnotation2(String a,String b,String c){
-        return "请求成功2";
+    public List<String> demoAnnotation2(String a,String b,String c){
+        return annotationService.aspectTest(a, b, c);
     }
 
 
