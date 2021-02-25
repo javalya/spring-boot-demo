@@ -2,9 +2,8 @@ package com.example.controller;
 
 import com.example.annotation.AccessLimit;
 import com.example.annotation.DemoAnnotation1;
-import com.example.annotation.DemoAnnotation2;
 import com.example.domain.User;
-import com.example.domain.UserDAO;
+import com.example.dao.UserDAO;
 import com.example.service.AnnotationService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cache.annotation.Cacheable;

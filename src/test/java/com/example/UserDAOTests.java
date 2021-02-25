@@ -1,7 +1,7 @@
 package com.example;
 
 import com.example.domain.User;
-import com.example.domain.UserDAO;
+import com.example.dao.UserDAO;
 import org.junit.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;

@@ -1,6 +1,7 @@
-package com.example.domain;
+package com.example.dao;
 
 
+import com.example.domain.User;
 import org.apache.ibatis.annotations.Param;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
